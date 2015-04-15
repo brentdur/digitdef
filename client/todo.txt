@@ -1,0 +1,51 @@
+-links scroll to top of page
+-tags link somewhere
+	main, post page, admin
+-images connected into gallery
+	in main, and full, admin-view, admin-overview views
+-update "about" text
+-fix update img
+-persist view count on img update
+-warning when deleting
+-prevent image overwrite
+-draft and dlete buttons
+-hide admin login if user isn't admin
+-bulk functions
+-main(909px)
+	fix post height and image #
+-main(760px)
+	post spacing for pic posts
+-base(760px)
+	nav menu
+-overview(960px)
+	tables compress on left, overflow
+-admin(728px)
+	goes to hell
+-view(930px)
+	buttons wrap
+-views/quickadds(1010px)
+	tables overflows left
+-quickadd(990px)
+	goes to hell
+
+add post content shortcodes
+
+factorize reused methods and reused things
+
+img update
+	update img requires both imgs to be updated
+	when changing img the preview box is nulled
+
+comments
+	allow users to erase comments
+	allow upvotes
+
+information in top bar for various events
+	post added
+	post deleted
+	post updated
+	img add/delte/updated
+	user log in
+	user log out
+	user created
+	comment created

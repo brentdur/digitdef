@@ -1,0 +1,64 @@
+<nav class="navbar navbar-default admin">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="home">Admin Panel</a>
+      <p class="navbar-text admin navbar-left">Signed in as: {{getCurrentUser.name}}</p>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="visible-xs-block nav navbar-nav">
+        <li><a href="admin/overview">Overview <span class="sr-only">(current)</span></a></li>
+        <ul>
+          <li>Quick Create</li>
+          <ul class="list-inline">
+            <li><button ng-click="quickGo('post')" class="btn">Post</button></li>
+            <!-- <li><button ng-click="quickGo('page')" class="btn">Page</button></li> -->
+            <li><button ng-click="quickGo('img')"class="btn">Image</button></li>
+          </ul>
+        </ul>
+        <li><a href="admin/view/posts">Posts</a></li>
+        <!-- <li><a href="admin/view/pages">Pages</a></li> -->
+        <li><a href="admin/view/images">Images</a></li>
+        <li><a href="admin/view/comments">Comments</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button ui-sref="base.home" class="btn btn-default navbar-btn admin">View Blog</button></li>
+        <li><button class="btn btn-default navbar-btn admin" ng-click="logout()">Log Out</button></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-2 hidden-xs">
+    <nav ui-scrollfix="+59" class="affix-top">
+      <ul class="nav nav-sidebar">
+        <li style="height:20px;"></li>
+        <li class="active"><a href="admin/overview">Overview <span class="sr-only">(current)</span></a></li>
+        <ul class="nav nav-sidebar quick">
+          <li>Quick Create</li>
+          <ul class="list-inline quick-item">
+            <li><button ng-click="quickGo('post')" class="btn">Post</button></li>
+            <!-- <li><button ng-click="quickGo('page')" class="btn">Page</button></li> -->
+            <li><button ng-click="quickGo('img')"class="btn">Image</button></li>
+          </ul>
+        </ul>
+        <li><a href="admin/view/posts">Posts</a></li>
+        <!-- <li><a href="admin/view/pages">Pages</a></li> -->
+        <li><a href="admin/view/images">Images</a></li>
+        <li><a href="admin/view/comments">Comments</a></li>
+      </ul>
+      </nav>
+    </div>
+
+    <ui-view autoscroll="false"></ui-view>
+
+  </div> <!-- row -->
+</div> <!-- container -->
+

@@ -1,0 +1,107 @@
+<div class="col-xs-10 col-xs-offset-2 main">
+      <div class="row">
+          <h4 class="view-title">Top {{type}}</h4>
+          <button class="bulk-button btn btn-success" ng-show="checked.length > 0 && !isComment" ng-click="pubBulk()">Publish Selected</button>
+          <button class="bulk-button btn btn-warning" ng-show="checked.length > 0  && !isComment" ng-click="draftBulk()">Draft Selected</button>
+          <button class="bulk-button btn btn-danger" ng-show="checked.length > 0" ng-click="deleteBulk()">Delete Selected</button>
+          <table class="table table-condensed table-bordered table-hover">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="blankCheckbox" ng-click="selectAllCheck()" ng-model="selectAll" aria-label="..."></th>
+                <th ng-repeat="heads in inf.header">{{heads}}</th>
+              </tr>
+            </thead>
+            <tbody ng-show="isPost">
+              <tr ng-repeat="content in bucket | orderBy:'-views'">
+                <td><input type="checkbox" id="blankCheckbox" ng-click="checkChecked(content)" ng-model="content.selected" aria-label="..."></td>
+                <td>{{content.title || content.alt}}</td>
+                <td>{{content.date | date:'MMMM dd, yyyy @ HH:MMa'}}</td>
+                <td><a ui-sref="base.home({specTag: tag})" ng-repeat="tag in content.tags">{{tag}} </a></td>
+                <td>{{content.views}}</td>
+                <td>{{content.update}}</td>
+                <td>
+                  <button class="btn btn-default view-btn" ng-show="isPub(content)" ui-sref="base.post({perma: content.link})">View</button>
+                  <button class="btn btn-primary view-btn" ng-show="isPub(content)" ui-sref="admin.quickAdd({post:content, type:type})">Edit</button>
+                  <button class="btn btn-primary view-btn" ng-hide="isPub(content)">Edit</button>
+                  <button class="btn btn-warning view-btn" ng-show="isPub(content)"ng-click="toDraft(content)">Draft</button>
+                  <button class="btn btn-success view-btn" ng-hide="isPub(content)" ng-click="toPub(content)"> Publish</button>
+                  <button class="btn btn-danger view-btn" ng-click="delete(content._id, false)">X</button></td>
+              </tr>
+            </tbody>
+            <tbody ng-show="isComment">
+              <tr ng-repeat="content in bucket | orderBy:'-views'">
+                <td><input type="checkbox" id="blankCheckbox" ng-click="checkChecked(content)" ng-model="content.selected" aria-label="..."></td>
+                <td ng-show="isPub(content.post)">{{content.post.title}}</td>
+                <td ng-hide="isPub(content.post)" style="color: red;">{{content.post.title}}(Drafted)
+                <td>{{content.author}}</td>
+                <td>{{content.date | date:'MMMM dd, yyyy @ HH:MMa'}}</td>
+                <td ng-bind-html="truncateComment(content.content)"></td>
+                <td>
+                  <button class="btn btn-default view-btn" ng-show="isPub(content.post)" ui-sref="base.post({perma: content.post.link})">View</button>
+                  <button class="btn btn-danger view-btn" ng-click="delete(content._id, false)">X</button></td>
+              </tr>
+            </tbody>
+            <tbody ng-show="isImg">
+              <tr ng-repeat="content in bucket | orderBy:'-views'">
+                <td><input type="checkbox" id="blankCheckbox" ng-click="checkChecked(content)" ng-model="content.selected" aria-label="..."></td>
+                <td>{{content.alt}}</td>
+                <td>{{content.date | date:'MMMM dd, yyyy @ HH:MMa'}}</td>
+                <td><a ui-sref="base.home({specTag: tag})" ng-repeat="tag in content.tags">{{tag}} </a></td>
+                <td>{{content.views}}</td>
+                <td>{{content.update}}</td>
+                <td>
+                  <button ng-click="viewImg($index)" class="btn btn-default view-btn">View</button>
+                  <button class="btn btn-primary view-btn" ng-show="isPub(content)" ui-sref="admin.quickImg({img:content})">Edit</button>
+                  <button class="btn btn-primary view-btn" ng-hide="isPub(content)">Edit</button>
+                  <button class="btn btn-warning view-btn" ng-show="isPub(content)"ng-click="toDraft(content)">Draft</button>
+                  <button class="btn btn-success view-btn" ng-hide="isPub(content)" ng-click="toPub(content)"> Publish</button>
+                  <button class="btn btn-danger view-btn" ng-click="delete(content._id, false)">X</button></td>
+              </tr>
+            </tbody>
+          </table>
+      </div> <!-- top views -->
+    </div> <!-- content -->
+<!--
+    <div class="col-xs-6 col-sm-4 table-responsive tops">
+          <h4>Top Comments</h4>
+          <table class="table table-condensed table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Likes</th>
+                <th>User</th>
+                <th>Post</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="comment in comments | orderBy:'-likes' | limitTo:8">
+                <td>{{comment.likes}}</td>
+                <td>{{comment.user}}</td>
+                <td>{{comment.post.title}}</td>
+                <td><a ng-href="{{comment.post.link}}">View</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <button>View All Comments</button>
+        </div> -->
+
+       <!--  <div class="col-xs-6 col-sm-4 table-responsive tops">
+          <h4>Top Images</h4>
+          <table class="table table-condensed table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Views</th>
+                <th>Title</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="image in images | orderBy:'-views' | limitTo: 8">
+                <td>{{image.views}}</td>
+                <td>{{image.alt}}</td>
+                <td><a ng-href="images/{{image.full}}" class="strip" data-strip-group="main-group">View</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <button>View All Images</button>
+        </div> -->

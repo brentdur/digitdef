@@ -1,0 +1,19 @@
+<!-- row -->
+<div class="row">
+  <!-- content column -->
+  <div class="col-sm-12">
+    <ol class="breadcrumb">
+      <li><a href="home">Home</a></li>
+      <li class="active">Images</li>
+    </ol>
+    <div class="row">
+      <!-- image grid -->
+      <div class="col-sm-12 img-main">
+        <p class="img-pre-text"> Click image for Full-size Gallery </p>
+        <button type="button" class="img-image-button" ng-repeat="image in images | orderBy:'-date'" ng-click="viewImg($index)" class="btn btn-default">
+            <img class="img-img-responsive" ng-src="assets/images/{{image.thumb}}">
+        </button>
+      </div>
+    </div>
+    </div> <!-- content column -->
+    </div> <!-- end row -->
