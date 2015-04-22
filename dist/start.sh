@@ -1,6 +1,5 @@
 #!/bin/bash 
 echo "Please enter port number"
 read port
-cd dist
-docker build -t digitdef && mkdir -p data/db && docker run -v "$(pwd)”/data:/data --name mongo -d mongo mongod --smallfiles && docker run --name node -v "$(pwd)”/data:/data --link mongo:mongo -p $port:$port digitdef 
+docker build -t digitdef . && docker run -v /home/bd/node-apps/data/db:/data/db --name mongo -d mongo mongod --smallfiles && docker run --name ddblog -v /home/bd/node-apps/data/db:/data/db --link mongo:mongo -p 9005:9005 digitdef 
 

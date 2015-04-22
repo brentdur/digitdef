@@ -5,12 +5,14 @@ RUN sudo apt-get install -y curl
 RUN sudo apt-get install -y git
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
-RUN sudo apt-get install -y build-essential
 COPY public/ /src/app/public/
 COPY server/ /src/app/server/
 COPY package.json /src/app/
-RUN cd /src/app && npm install
+RUN sudo npm -g install npm@next
+RUN sudo npm cache clean
+RUN cd /src/app && sudo npm install
 EXPOSE 9005
 
-ENV NODE_ENV=production PORT=9005
-CMD ["node", "/src/app/server/app.js"] 
+ENV NODE_ENV=production PORT=9005 SECRET="7753346" DOMAIN="brentondurkee.com"
+CMD ["node", "/src/app/server/app.js"]
+
