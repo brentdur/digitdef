@@ -9,7 +9,8 @@ angular.module('ddblogApp')
         controller: 'QuickAddCtrl',
         params: {
           type: 'image',
-          img: null
+          img: null,
+          draft: false
         }
       });
   });

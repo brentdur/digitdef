@@ -31,7 +31,7 @@ router.get('/live', function(req, res, next){
 router.post('/', auth.hasRole('admin'), function(req, res, next){
   var image = new Image(req.body);
 
-  Image.find({'full':image.full}, function(err, images){
+  Image.find({$or: [ {'full':image.full},{'thumb':image.thumb} ]}, function(err, images){
     if(err) {return next(err);}
     if(images.length > 0){
       res.status(500).json({ error: 'File already exists' })
@@ -60,6 +60,7 @@ router.post('/:id/live', auth.hasRole('admin'), function(req, res, next){
 router.post('/update/:id', auth.hasRole('admin'), function(req, res, next){
   Image.update({_id: req.image._id}, {
     alt: req.body.alt,
+		date: req.body.date,
     full: req.body.full,
     thumb: req.body.thumb,
     tags: req.body.tags,

@@ -7,6 +7,7 @@ angular.module('ddblogApp', [
   'ui.router',
   'angularFileUpload',
   'ui.scrollfix',
+  'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider){
       $urlRouterProvider

@@ -14,7 +14,8 @@
               <tr ng-repeat="post in posts | orderBy:'-views' | limitTo:8">
                 <td>{{post.views}}</td>
                 <td>{{post.title}}</td>
-                <td><a ng-href="post/{{post.link}}">View</a></td>
+                <td ng-show="post.update === 'published'"><a ng-href="post/{{post.link}}">View</a></td>
+                <td ng-hide="post.update === 'published'"><a ui-sref="admin.quickAdd({post:post, type:'posts', draft:true})">Edit</a></td>
               </tr>
             </tbody>
           </table>

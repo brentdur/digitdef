@@ -14,7 +14,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 
 body {
-  min-height: 2000px;
+  min-height: auto;
   padding-top: 70px;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
@@ -231,6 +231,9 @@ h6, .h6 {
 
 @media (min-width: 768px) {
     /*content height is 706*/
+    body {
+      min-height: auto;
+    }
     .img-responsive {
         visibility: visible;
         height: 230.40px;

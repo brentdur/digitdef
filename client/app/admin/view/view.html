@@ -1,4 +1,4 @@
-<div class="col-xs-10 col-xs-offset-2 main">
+<div class="col-xs-12 col-sm-10 col-sm-offset-2 main">
       <div class="row">
           <h4 class="view-title">Top {{type}}</h4>
           <button class="bulk-button btn btn-success" ng-show="checked.length > 0 && !isComment" ng-click="pubBulk()">Publish Selected</button>
@@ -22,7 +22,7 @@
                 <td>
                   <button class="btn btn-default view-btn" ng-show="isPub(content)" ui-sref="base.post({perma: content.link})">View</button>
                   <button class="btn btn-primary view-btn" ng-show="isPub(content)" ui-sref="admin.quickAdd({post:content, type:type})">Edit</button>
-                  <button class="btn btn-primary view-btn" ng-hide="isPub(content)">Edit</button>
+                  <button class="btn btn-primary view-btn" ng-hide="isPub(content)" ui-sref="admin.quickAdd({post:content, type:type, draft:true})">Edit</button>
                   <button class="btn btn-warning view-btn" ng-show="isPub(content)"ng-click="toDraft(content)">Draft</button>
                   <button class="btn btn-success view-btn" ng-hide="isPub(content)" ng-click="toPub(content)"> Publish</button>
                   <button class="btn btn-danger view-btn" ng-click="delete(content._id, false)">X</button></td>
@@ -52,7 +52,7 @@
                 <td>
                   <button ng-click="viewImg($index)" class="btn btn-default view-btn">View</button>
                   <button class="btn btn-primary view-btn" ng-show="isPub(content)" ui-sref="admin.quickImg({img:content})">Edit</button>
-                  <button class="btn btn-primary view-btn" ng-hide="isPub(content)">Edit</button>
+                  <button class="btn btn-primary view-btn" ng-hide="isPub(content)" ui-sref="admin.quickImg({img:content, draft:true})">Edit</button>
                   <button class="btn btn-warning view-btn" ng-show="isPub(content)"ng-click="toDraft(content)">Draft</button>
                   <button class="btn btn-success view-btn" ng-hide="isPub(content)" ng-click="toPub(content)"> Publish</button>
                   <button class="btn btn-danger view-btn" ng-click="delete(content._id, false)">X</button></td>

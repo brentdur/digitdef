@@ -23,14 +23,14 @@
 	goes to hell
 -view(930px)
 	buttons wrap
+-views/quickadds(1010px)
+	tables overflows left
+-quickadd(990px)
+	goes to hell
 
 add post content shortcodes
 
-views/quickadds(1010px)
-	tables overflows left
-
-quickadd(990px)
-	goes to hell
+factorize reused methods and reused things
 
 img update
 	update img requires both imgs to be updated

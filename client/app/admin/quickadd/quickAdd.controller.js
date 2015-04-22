@@ -11,6 +11,8 @@ angular.module('ddblogApp')
   '$location',
   function($scope, posts, images, $stateParams, $http, $upload, $location){
     $scope.update = false;
+    $scope.isCollapsed = true;
+    $scope.isDraft = $stateParams.draft;
     var id;
     $scope.dragText = 'Drop Full Image Here';
     $scope.dragTextT ='Drop Thumbnail Image Here';
@@ -71,9 +73,9 @@ angular.module('ddblogApp')
       var sum = '';
       var cont = '';
       var tgs = [];
-      if($scope.content.indexOf('<<<break>>>') != -1){
-        sum = $scope.content.split('<<<break>>>')[0];
-        cont = $scope.content.replace(' <<<break>>>', '');
+      if($scope.content.indexOf('[break]') != -1){
+        sum = $scope.content.split('[break]')[0];
+        cont = $scope.content.replace('[break]', '');
       }
       else {
         cont = $scope.content;
@@ -116,6 +118,7 @@ angular.module('ddblogApp')
       }
       posts.update(id, {
         title: $scope.title,
+        date: $scope.dateTime,
         summary: '',
         tags: tagArray,
         content: $scope.content,
@@ -135,7 +138,7 @@ angular.module('ddblogApp')
     // });
 
     $scope.fixedContent = function(){
-      var find = ['break', 'tab'];
+      var find = ['para', 'tab'];
       var replace = ['</p><p>[tab]', '&nbsp&nbsp&nbsp&nbsp']; 
       var newContent = $scope.content;
       for(var i = 0; i<  find.length; i++){
@@ -187,6 +190,8 @@ angular.module('ddblogApp')
         $scope.thumb = null;
       }).error(function(data){
         var num = images.images.length*3+Math.round(Math.random()*1000);
+        $scope.dragText = 'Drop Full Image Here';
+        $scope.dragTextT ='Drop Thumbnail Image Here';
         $scope.full = num+'.jpg';
         $scope.thumbN = num +'.thumb.jpg';
         alert(data.error);
@@ -234,6 +239,7 @@ angular.module('ddblogApp')
         console.log(type);
         images.update(id, {
           alt: $scope.alt,
+          date: $scope.dateTime,
           tags: tagArray,
           full: $scope.full,
           thumb: $scope.thumbN,

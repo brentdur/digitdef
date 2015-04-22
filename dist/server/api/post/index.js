@@ -76,6 +76,7 @@ router.post('/:id/live', auth.hasRole('admin'), function(req, res, next){
 router.post('/update/:id', auth.hasRole('admin'), function(req, res, next){
   Post.update({_id: req.post._id}, {
     title: req.body.title,
+		date: req.body.date,
     content: req.body.content,
     tags: req.body.tags,
     update: req.body.update

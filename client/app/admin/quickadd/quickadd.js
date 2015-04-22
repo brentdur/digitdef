@@ -8,7 +8,8 @@ angular.module('ddblogApp')
         templateUrl: 'app/admin/quickadd/quickadd.html',
         controller: 'QuickAddCtrl',
         params: {
-          post: null
+          post: null,
+          draft: false
         }
       });
   });
