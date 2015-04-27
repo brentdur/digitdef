@@ -13,7 +13,7 @@
         <div class="blog-post" ng-repeat="post in posts | dateMonth:dateFilt | tag:tagFilt | orderBy:predicate:reverse | offset:visiblePosts | limitTo:5" ng-show="extendPost($index)">
           <h2 class="blog-title"><a ng-href="post/{{post.link}}">{{post.title}}</a></h2>
           <p class="blog-meta">{{post.date | date:'MMMM dd yyyy'}} | Tags:<a ui-sref="base.home({specTag: tag})" ng-repeat="tag in post.tags">{{tag}}{{comma($last)}} </a></p>
-          <p ng-bind-html="postSmall(post)"></p>
+          <p ng-bind-html="trustHtml(postSmall(post))"></p>
           <div ng-switch="post.visibleMore">
             <a ng-switch-when="true" ng-href="post/{{post.link}}"><p class="readmore">Read More<br /><i class="fa fa-4x fa-ellipsis-h"></i></p></a>
             <hr ng-switch-when="false">
@@ -31,7 +31,7 @@
         <div class="blog-post-full" ng-repeat="post in posts | dateMonth:dateFilt | tag:tagFilt | orderBy:predicate:reverse | offset:visiblePosts | limitTo:5" ng-hide="extendPost($index)">
           <h2 class="blog-title"><a ng-href="post/{{post.link}}">{{post.title}}</a></h2>
           <p class="blog-meta">{{post.date | date:'MMMM dd yyyy'}} | Tags:<a ui-sref="base.home({specTag: tag})" ng-repeat="tag in post.tags">{{tag}}{{comma($last)}} </a></p>
-          <p ng-bind-html="postMid(post)"></p>
+          <p ng-bind-html="trustHtml(postMid(post))"></p>
           <div ng-switch="post.visibleMore">
             <a ng-switch-when="true" ng-href="post/{{post.link}}"><p class="readmore">Read More<br /><i class="fa fa-4x fa-ellipsis-h"></i></p></a>
             <hr ng-switch-when="false">

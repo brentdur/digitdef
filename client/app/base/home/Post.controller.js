@@ -9,7 +9,8 @@ angular.module('ddblogApp')
   '$filter',
   'Auth',
   '$stateParams',
-  function($scope, $window, posts, images, $filter, Auth, $stateParams) {
+  '$sce',
+  function($scope, $window, posts, images, $filter, Auth, $stateParams, $sce) {
   $scope.visiblePosts = 0;
   $scope.visibleImages = 0;
   $scope.numImages = 0;
@@ -27,7 +28,7 @@ angular.module('ddblogApp')
   $scope.reverse = true;
 
   $scope.postSmall = function(post) {
-    if(post.summary && post.summary.length !== 0) {
+    if(post.summary && post.summary.length != 0) {
       post.visibleMore = true;
       return post.summary;
     }
@@ -41,7 +42,8 @@ angular.module('ddblogApp')
     }
   };
   $scope.postMid = function(post) {
-    if(post.summary && post.summary.length !== 0) {
+    console.log(post.summary);
+    if(post.summary && post.summary.length != 0) {
       post.visibleMore = true;
       return post.summary;
     }
@@ -95,6 +97,10 @@ angular.module('ddblogApp')
         return '';
       }
       return ',';
+    };
+
+    $scope.trustHtml = function(snip) {
+      return $sce.trustAsHtml(snip);
     };
 
   $scope.extendPost = function(index) {

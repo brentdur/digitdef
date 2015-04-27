@@ -9,7 +9,8 @@ angular.module('ddblogApp')
   '$http',
   '$upload',
   '$location',
-  function($scope, posts, images, $stateParams, $http, $upload, $location){
+  '$sce',
+  function($scope, posts, images, $stateParams, $http, $upload, $location, $sce){
     $scope.update = false;
     $scope.isCollapsed = true;
     $scope.isDraft = $stateParams.draft;
@@ -104,9 +105,23 @@ angular.module('ddblogApp')
       $scope.content = '';
     };
 
+    $scope.trustHtml = function(snip) {
+      return $sce.trustAsHtml(snip);
+    };
+
     $scope.updatePost = function(type) {
       if(!$scope.title || $scope.title === '') {return;}
       var tagArray;
+      var sum = '';
+      var cont = '';
+      if($scope.content.indexOf('[break]') != -1){
+        sum = $scope.content.split('[break]')[0];
+        cont = $scope.content.replace('[break]', '');
+      }
+      else {
+        cont = $scope.content;
+      }
+
       if($scope.tags){
         tagArray = $scope.tags.split(',');
         for(var x in tagArray){
@@ -119,9 +134,9 @@ angular.module('ddblogApp')
       posts.update(id, {
         title: $scope.title,
         date: $scope.dateTime,
-        summary: '',
+        summary: sum,
         tags: tagArray,
-        content: $scope.content,
+        content: cont,
         update: type
       }).success(function(){
         if($scope.update){
@@ -143,7 +158,6 @@ angular.module('ddblogApp')
       var newContent = $scope.content;
       for(var i = 0; i<  find.length; i++){
         var re = new RegExp('\\['+find[i]+ '\\]','g');
-        console.log(re);
         newContent = newContent.replace(re, replace[i]);
       }
       return newContent;

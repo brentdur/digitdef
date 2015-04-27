@@ -13,7 +13,7 @@
         <div class="blog-post" style="height: auto;">
           <h2 class="blog-title">{{post.title}}</h2>
           <p class="blog-meta">{{post.date | date:'MMMM d yyyy'}}</p>
-          <p ng-bind-html="full(post)"></p>
+          <p ng-bind-html="trustHtml(full(post))"></p>
           <hr>
           <ul class="tags-list">Tags:
             <li ng-repeat="tag in post.tags">

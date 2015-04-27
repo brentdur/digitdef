@@ -52,8 +52,9 @@
     </div>
   </form>
   <div class="row">
+    <p>[break], [para], [tab]</p>
     <h2>Preview:</h2>
-    <div class="col-md-12" ng-bind-html="fixedContent()">
+    <div class="col-md-12" ng-bind-html="trustHtml(fixedContent())">
     </div>
   </div>
 </div>

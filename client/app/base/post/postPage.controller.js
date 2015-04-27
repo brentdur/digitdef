@@ -8,7 +8,8 @@ angular.module('ddblogApp')
   'comments',
   'posts',
   'Auth',
-  function($scope, $stateParams, post, comments, posts, Auth){
+  '$sce',
+  function($scope, $stateParams, post, comments, posts, Auth, $sce){
     $scope.post = post;
     $scope.isLoggedIn = Auth.isLoggedIn;
 
@@ -40,6 +41,10 @@ angular.module('ddblogApp')
       $scope.dateTime = new Date();
     };
     $scope.refreshDate();
+
+    $scope.trustHtml = function(snip) {
+      return $sce.trustAsHtml(snip);
+    }; 
 
     $scope.login = function(form) {
         $scope.submitted = true;
