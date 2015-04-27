@@ -289,5 +289,20 @@ angular.module('ddblogApp')
         }
     };
 
+    $scope.delete = function(){
+      var conf = confirm("Are you sure you want to delete this content?");
+      if(!conf){
+        return;
+      }
+      $scope.tags = '';
+      $scope.content = '';
+      $scope.title = '';
+      $scope.files = '';
+      $scope.thumb = '';
+      $scope.full = '';
+      $scope.thumbN = '';
+      $scope.alt = '';
+    };
+
 
 }]);

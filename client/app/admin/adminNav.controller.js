@@ -8,6 +8,7 @@ angular.module('ddblogApp')
   'Auth',
   function($scope, $state, $rootScope, Auth){
     $rootScope.bodyId = 'admin';
+    $rootScope.status = 'ready';
     $scope.getCurrentUser = Auth.getCurrentUser();
     $scope.quickGo = function(where){
       if(where === 'img') { $state.go('^.quickImg'); }

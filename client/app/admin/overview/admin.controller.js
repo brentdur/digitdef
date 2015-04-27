@@ -12,6 +12,7 @@ angular.module('ddblogApp')
     $scope.posts = posts.posts;
     $scope.images = images.images;
     $scope.comments = comments.comments;
+    $scope.status = 'ready';
 
     $scope.goTo = function(where){
       $state.go('admin.view', {'type':where});

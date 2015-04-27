@@ -10,7 +10,8 @@ angular.module('ddblogApp')
   'Auth',
   '$stateParams',
   '$sce',
-  function($scope, $window, posts, images, $filter, Auth, $stateParams, $sce) {
+  '$rootScope',
+  function($scope, $window, posts, images, $filter, Auth, $stateParams, $sce, $rootScope) {
   $scope.visiblePosts = 0;
   $scope.visibleImages = 0;
   $scope.numImages = 0;
@@ -171,5 +172,7 @@ angular.module('ddblogApp')
           });
         }
       };
+
+      $rootScope.status = 'ready';
 
 }]);

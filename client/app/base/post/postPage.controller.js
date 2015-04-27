@@ -9,7 +9,8 @@ angular.module('ddblogApp')
   'posts',
   'Auth',
   '$sce',
-  function($scope, $stateParams, post, comments, posts, Auth, $sce){
+  '$rootScope',
+  function($scope, $stateParams, post, comments, posts, Auth, $sce, $rootScope){
     $scope.post = post;
     $scope.isLoggedIn = Auth.isLoggedIn;
 
@@ -64,4 +65,5 @@ angular.module('ddblogApp')
         }
       };
 
+      $rootScope.status = 'ready';
   }]);

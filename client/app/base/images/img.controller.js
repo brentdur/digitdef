@@ -5,7 +5,8 @@ angular.module('ddblogApp')
   '$scope',
   'images',
   '$filter',
-  function($scope, images, $filter){
+  '$rootScope',
+  function($scope, images, $filter, $rootScope){
     $scope.images = images.images;
 
 
@@ -27,4 +28,5 @@ angular.module('ddblogApp')
         );
     };
 
+    $rootScope.status = 'ready';
 }]);
