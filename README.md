@@ -7,3 +7,5 @@ Has several core features, including:
 * built to run on a single server
 * multi-user support
 * first and foremost a website, with blog features added, not vice-versa
+
+Built using Yeoman, to download all the source code use the master branch, for the distribution version go to the dist branch.

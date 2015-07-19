@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./post.controller');
+
 var Post = require('./post.model');
 var Comment = require('../comment/comment.model');
 var auth = require('../../auth/auth.service');

@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-// var controller = require('./image.controller');
+
 var Image = require('./image.model');
 var path = require('path');     //used for file path
 var fs = require('fs-extra');       //File System - for file manipulation
