@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('ddblogApp')
-   .factory('comments', ['$http', function($http){
+   .factory('comments', ['$http', function($http){;
+
   var o = {
     comments: []
   };
